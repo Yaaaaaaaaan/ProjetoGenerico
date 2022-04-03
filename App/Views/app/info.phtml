@@ -1,0 +1,216 @@
+    <style>
+      .bd-placeholder-img {
+        font-size: 1.125rem;
+        text-anchor: middle;
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        -ms-user-select: none;
+        user-select: none;
+      }
+
+      @media (min-width: 768px) {
+        .bd-placeholder-img-lg {
+          font-size: 3.5rem;
+        }
+      }
+    </style>
+  </head>
+  <body>
+   <header class="navbar navbar-dark sticky-top bg-dark flex-md-nowrap p-0 shadow">
+  <a class="navbar-brand col-md-3 col-lg-2 me-0 px-3" href="#">Projeto genérico</a>
+  <button class="navbar-toggler position-absolute d-md-none collapsed" type="button" data-toggle="collapse" data-bs-target="#sidebarMenu" aria-controls="sidebarMenu" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <input class="form-control form-control-dark w-100" type="text" placeholder="Pesquisa" aria-label="Search">
+  <div class="navbar-nav">
+    <div class="nav-item text-nowrap">
+      <a class="nav-link px-3 active" href="/info"><?= $_SESSION['nome']?></a>
+    </div>
+  </div>
+  <div class="navbar-nav">
+    <div class="nav-item text-nowrap">
+      <a class="nav-link px-3" href="/sair">Sair</a>
+    </div>
+  </div>
+</header>
+
+<div class="container-fluid">
+  <div class="row">
+    <nav id="sidebarMenu" class="col-md-3 col-lg-2 d-md-block bg-light sidebar collapse">
+      <div class="position-sticky pt-3">
+        <ul class="nav flex-column">
+          <li class="nav-item">
+            <a class="nav-link" href="/inicial">
+              <span data-feather="home"></span>
+              Informação Geral <span class="sr-only">(current)</span>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/pedidos">
+              <span data-feather="pedidos"></span>
+              Pedidos
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/produtosAtivos">
+              <span data-feather="produtos"></span>
+              Produtos
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/historicoEstoque">
+              <span data-feather="estoque"></span>
+              Estoque
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">
+              <span data-feather="users"></span>
+              Pessoal
+            </a>
+          </li>
+        </ul>
+
+        <h6 class="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-4 mb-1 text-muted">
+          <span>Saved reports</span>
+          <a class="link-secondary" href="#" aria-label="Add a new report">
+            <span data-feather="plus-circle"></span>
+          </a>
+        </h6>
+        <ul class="nav flex-column mb-2">
+          <li class="nav-item">
+            <a class="nav-link" href="#">
+              <span data-feather="file-text"></span>
+              Current month
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">
+              <span data-feather="file-text"></span>
+              Last quarter
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">
+              <span data-feather="file-text"></span>
+              Social engagement
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">
+              <span data-feather="file-text"></span>
+              Year-end sale
+            </a>
+          </li>
+        </ul>
+      </div>
+    </nav>
+
+    <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
+      <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+      <?php if($_SESSION['rank']<9){ 
+        error_reporting(0);?>
+        
+             <h1 class="h2">Configurações Básicas</h1>
+        <form class="form-inline" action="/alterarSenha" method="post">
+
+            <div class="form-group mx-sm-3 mb-2">
+            <input type="text" class="form-control" value="<?= $_SESSION['id'];?>" name="idUsuario" hidden="hidden">
+            <label for="inputPassword1" class="sr-only">Senha atual</label>
+            <input type="password" class="form-control" value="<?php if($this->view->erroNewPass=='erro'){echo $this->view->usuario['oldpass'];} else{}?>" id="inputPassword2" required="" name="oldpass" placeholder="Senha atual">
+          </div>
+           <div class="form-group mx-sm-3 mb-2">
+            <label for="inputPassword2" class="sr-only">Nova senha</label>
+            <input type="password" class="form-control" value="<?php if($this->view->erroNewPass=='erro'){echo $this->view->usuario['newpass'];} else{}?>" id="inputPassword2" required="" placeholder="Nova senha" name="newpass">
+          </div>
+           <div class="row">
+             <button type="submit" class="btn btn-primary mx-sm-3 mb-2">Alterar senha</button>
+           </div>
+           <?php if($this->view->erroNewPass== 'erro'){ ?>
+        
+          <div class='row'>
+            <div class="col">
+              <span class="text text-danger">*Senha anterior inválida, ou, nova senha muito curta!</span>
+            </div>
+          </div> <?php } ?>
+        </form>  
+      <?php }else{ ?> 
+
+             <h1 class="h2">Configurações Básicas</h1>
+        <form class="form-inline" action="/alterarSenha" method="post">
+            <div class="form-group mx-sm-3 mb-2">
+               <input type="text" class="form-control" value="<?= $_SESSION['id'];?>" name="idUsuario" hidden="hidden">
+            <label for="inputPassword1" class="sr-only">Senha atual</label>
+            <input type="password" class="form-control" value="<?php if($this->view->erroNewPass=='erro'){echo $this->view->usuario['oldpass'];} else{}?>" id="inputPassword2" required="" name="oldpass" placeholder="Senha atual">
+          </div>
+           <div class="form-group mx-sm-3 mb-2">
+            <label for="inputPassword2" class="sr-only">Nova senha</label>
+            <input type="password" class="form-control" value="<?php if($this->view->erroNewPass=='erro'){echo $this->view->usuario['newpass'];} else{}?>" id="inputPassword2" required="" placeholder="Nova senha" name="newpass">
+          </div>
+           <div class="row">
+             <button type="submit" class="btn btn-primary mx-sm-3 mb-2">Alterar senha</button>
+           </div>
+           <?php if($this->view->erroNewPass== 'erro'){ ?>
+        
+          <div class='row'>
+            <div class="col">
+              <span class="text text-danger">*Senha anterior inválida, ou, nova senha muito curta!</span>
+            </div>
+          </div> <?php } ?>
+        </form>
+      <?php } ?>
+      <div class="row">
+        <div class="col">
+          <h2>Informações Básicas</h2>
+          <div class="table-responsive">
+            <table class="table table-striped table-sm">
+              <thead>
+                <tr>
+                  <th>Código</th>
+                  <th>Nick</th>
+                  <th>Email</th>
+                  <th>Rank</th>
+                  <th>Data do Cadastro</th>
+                  <th>Data da última alteração</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>1,001</td>
+                  <td>Lorem</td>
+                  <td>ipsum</td>
+                  <td>dolor</td>
+                  <td>sit</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col">
+          <h2>Informações Pessoais</h2>
+          <div class="table-responsive">
+            <table class="table table-striped table-sm">
+              <thead>
+                <tr>
+                  <th>RG</th>
+                  <th>CPF</th>
+                  <th>Nome</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>1,001</td>
+                  <td>Lorem</td>
+                  <td>ipsum</td>
+                  <td>dolor</td>
+                  <td>sit</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+      </div>
+    </div>
+  </div>
+</main>
