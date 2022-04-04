@@ -229,7 +229,7 @@ class Produto extends Model{
 				P.statusProd = 'A'
 			GROUP BY N.codProdFkEnt
 			ORDER BY
-				P.codProd asc
+				N.dataEnt desc
 				LIMIT
 					$limit
 				OFFSET
