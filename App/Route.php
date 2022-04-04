@@ -129,6 +129,11 @@
 				'controller'=>'prodController',
 				'action'=>'exibeEstq'
 			);
+			$routes['detalhehistoricoEntrada'] = array(
+				'route' =>'/infoProduto',
+				'controller'=>'prodController',
+				'action'=>'exibeEstq'
+			);
 			$routes['historicoSaida'] = array(
 				'route' =>'/historicoSaida',
 				'controller'=>'prodController',
