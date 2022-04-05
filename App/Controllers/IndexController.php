@@ -16,9 +16,9 @@
 		public function index(){
 			//Inicia com o controle dos dados
 			$produto=Container::getModel('produto');
-			$totalRegistrosPaginaHE = 10;
+			$totalRegistrosPaginaHE = 7;
 	 		$deslocamentoHE = 0;
-	 		$paginaHE=isset($_GET['paginaHE']) ? $_GET['paginaHE'] :1;
+	 		$paginaHE=isset($_GET['produtosRecentes']) ? $_GET['produtosRecentes'] :1;
 	 		$deslocamentoHE=($paginaHE -1)*$totalRegistrosPaginaHE;
 	 		//metade da paginação
 	 		$produtosHE = $produto->getPorPaginaHE($totalRegistrosPaginaHE, $deslocamentoHE);	 		
