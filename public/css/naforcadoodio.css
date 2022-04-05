@@ -20,7 +20,6 @@ body {
   justify-content: center;
   background-color: #f0f0f0;
 }
-
 .form-signin {
   width: 100%;
   max-width: 330px;
@@ -50,7 +49,6 @@ body {
   border-top-left-radius: 0;
   border-top-right-radius: 0;
 }
-
 .tabela{
   border-style: none;
   background:none;
@@ -70,39 +68,37 @@ body {
 .btn-warning:hover{ color:#F0F0F0;}
 .btn-warning{font-weight: bold; color:#FFF;}
   .btn-warning:hover{ color:#F0F0F0;}
-
   .btn-aviso{border:none; color:red; background:none;margin:0;padding:0;}
       .btn-info{color:white;font-weight: bold;}
       .btn-info:hover{color:#f0f0f0;font-weight: bold;}
-
       .link-dado{font-weight: bold;color:#424242;text-decoration: none;}
       .link-dado:hover{text-decoration:underline; font-weight: bold;color:#424242;}
 .bannerTeste{
   background-color: ;
   width: 100%;
   height: 100vh;
+}
+.corpo{
 
 }
-
+.corpo span{}
 .infoBox{
+  float: left;
   background-color: #f0f0f0;
-  width: 155px;
+  width: 175px;
   height: 305px;
   display: flex;
   justify-content: center;
   align-items: center;
   flex-direction: column;
   flex-wrap: wrap;
-  margin:25 0 25 20vh;
+  margin:25 0 25 45;
   transition: background-color 1s, box-shadow 1s;
 }
-
 .infoBox img{
   width: 100%;
  padding: 0 10 0 10;
-
 }
-
 .infoBox p{
   font-size: 15px;
   margin-top: 10px;
@@ -110,15 +106,14 @@ body {
 .infoBox:hover{
   background-color: rgba(245, 222, 179, 0.1);
   box-shadow:25px 25px 25px rgba(0, 0, 0, 0.1);  
-  transition: all 2s;
+  transition: all 1s;
   }
 header{
-
 }
-nav{
-  background-image: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.1));
+.navegador{
+  background-image: linear-gradient(rgba(0, 0, 0, 0.15), rgba(255, 255, 255, 0.1));
 }
-nav a, ul, li{
+.navegador .a , .ul, .li{
   text-decoration: none;
   color: whitesmoke;
   list-style: none;
@@ -129,15 +124,28 @@ nav a, ul, li{
   flex-direction: row;
   flex-wrap: wrap;
 }
-
-a:hover{
+.navegador .a:hover{
   color: floralwhite;
 }
-
 footer{
   background-color: rgba(0, 0, 0, 0.3);
   color: whitesmoke;
-  padding: 10% 0 0 2%;
+  padding: 45px 0 0 2%;
   font-size: 16px;
 }
-
+.carousel .ctrlBtnAn{
+  border: none;
+  margin-left: 25px;
+  position: relative;
+  float: left;
+  top: -170px;
+  z-index: 1;
+}
+.carousel .ctrlBtnPr{
+  border: none;
+  margin-right: 25px;
+  position: relative;
+  float: right;
+  top: -170px;
+  z-index: 1;
+}

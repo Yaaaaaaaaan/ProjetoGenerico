@@ -8,13 +8,27 @@
 	 		$this->view->login =isset($_GET['login']) ? $_GET['login'] : '';
 	 		$this->render('login');
 	 	}
-
 	 	public function novo(){
 	 		$this->view->usuario=array('nome'=>'','email'=>'','nick'=>'','senha'=>'',);
 	 		$this->view->erroCadastro=false;
 			$this->render('novo');
 		}
 		public function index(){
+			//Inicia com o controle dos dados
+			$produto=Container::getModel('produto');
+			$totalRegistrosPaginaHE = 10;
+	 		$deslocamentoHE = 0;
+	 		$paginaHE=isset($_GET['paginaHE']) ? $_GET['paginaHE'] :1;
+	 		$deslocamentoHE=($paginaHE -1)*$totalRegistrosPaginaHE;
+	 		//metade da paginação
+	 		$produtosHE = $produto->getPorPaginaHE($totalRegistrosPaginaHE, $deslocamentoHE);	 		
+	 		$totalProdutosHE=$produto->getTotalRegistrosHE();
+	 		//finalização da paginação
+			$this->view->totalPaginasHE=ceil($totalProdutosHE['total']/$totalRegistrosPaginaHE);			
+			$this->view->paginaAtivaHE=$paginaHE;
+	 		$this->view->produtosHE=$produtosHE;
+
+			//Rendeniza a index
 			$this->render('index');
 		}
 

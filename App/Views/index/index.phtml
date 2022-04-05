@@ -1,11 +1,11 @@
 <div class="bodyIndex">
   <div class="bannerTeste">
-    <nav>
-      <ul>
-        <li><a href="/">Inicial</a></li>
-        <li><a href="/novo">Cadastre-se</a></li>
-        <li><a href="/login">Login</a></li>
-        <li><a href="/sobre">Sobre nós</a></li>
+    <nav class="navegador">
+      <ul class="ul">
+        <li class="li"><a class="a" href="/">Inicial</a></li>
+        <li class="li"><a class="a" href="/novo">Cadastre-se</a></li>
+        <li class="li"><a class="a" href="/login">Login</a></li>
+        <li class="li"><a class="a" href="/sobre">Sobre nós</a></li>
       </ul>
     </nav>      
   </div>
@@ -15,32 +15,75 @@
 
     
       <div class="corpo">
+        <span><h3>Produtos recentes</h3>
+        <h6>Verifique nossos produtos mais recentes abaixo!</h6></span>
         <div id="carouselExampleFade" class="carousel slide carousel-fade" data-bs-ride="carousel">
-  <div class="carousel-inner">
-    <div class="carousel-item active">
-      <div class="infoBox">
-       <img src="/img/camisateste.jpg">
-        <p>Produto A</p>
-     </div> 
-    </div>   
-    <div class="carousel-item">
-     <div class="infoBox">
-       BBBB
-     </div>
-    </div>
-    <div class="carousel-item">
-      <div class="infoBox">
-       CCCC
-     </div>
-    </div>
-  </div>
-  <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleFade" data-bs-slide="prev">
-    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-    <span class="visually-hidden">Previous</span>
+          <div class="carousel-inner">
+            <?php 
+            $C=2;
+              foreach($this->view->produtosHE as $codProd=>$produtoHE){
+                if($C==2){
+                ?>
+                
+              <div class="carousel-item active">
+                <?php 
+
+                ?>
+                <div class="infoBox">
+                  <img src="/img/camisateste.jpg">
+                  <p><?=$produtoHE['descProd']?> - <?=$produtoHE['tamProd']?></p>
+                  <span><?=$produtoHE["vlrUnitVen"]?></span>
+                </div>
+                <div class="infoBox">
+                  <img src="/img/camisateste.jpg">
+                  <p><?=$produtoHE['descProd']?> - <?=$produtoHE['tamProd']?></p>
+                  <span><?=$produtoHE["vlrUnitVen"]?></span>
+                </div>
+                <div class="infoBox">
+                  <img src="/img/camisateste.jpg">
+                  <p><?=$produtoHE['descProd']?> - <?=$produtoHE['tamProd']?></p>
+                  <span><?=$produtoHE["vlrUnitVen"]?></span>
+                </div>
+                <div class="infoBox">
+                  <img src="/img/camisateste.jpg">
+                  <p><?=$produtoHE['descProd']?> - <?=$produtoHE['tamProd']?></p>
+                  <span><?=$produtoHE["vlrUnitVen"]?></span>
+                </div>
+              </div>
+             
+                          
+            <?php $C=1; }else{ ?>
+              <div class="carousel-item">
+                <div class="infoBox">
+                  <img src="/img/camisateste.jpg">
+                  <p><?=$produtoHE['descProd']?> - <?=$produtoHE['tamProd']?></p>
+                  <span><?=$produtoHE["vlrUnitVen"]?></span>
+                </div>
+                <div class="infoBox">
+                  <img src="/img/camisateste.jpg">
+                  <p><?=$produtoHE['descProd']?> - <?=$produtoHE['tamProd']?></p>
+                  <span><?=$produtoHE["vlrUnitVen"]?></span>
+                </div>
+                <div class="infoBox">
+                  <img src="/img/camisateste.jpg">
+                  <p><?=$produtoHE['descProd']?> - <?=$produtoHE['tamProd']?></p>
+                  <span><?=$produtoHE["vlrUnitVen"]?></span>
+                </div>
+                <div class="infoBox">
+                  <img src="/img/camisateste.jpg">
+                  <p><?=$produtoHE['descProd']?> - <?=$produtoHE['tamProd']?></p>
+                  <span><?=$produtoHE["vlrUnitVen"]?></span>
+                </div>
+              </div>
+            <?php }}?>
+       </div>
+    
+  
+  <button class="ctrlBtnAn" type="button" data-bs-target="#carouselExampleFade" data-bs-slide="prev" >
+    <i class="fa-solid fa-chevron-left fa-2x"></i>
   </button>
-  <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleFade" data-bs-slide="next">
-    <span class="carousel-control-next-icon" aria-hidden="true"></span>
-    <span class="visually-hidden">Next</span>
+  <button class="ctrlBtnPr" type="button" data-bs-target="#carouselExampleFade" data-bs-slide="next">
+   <i class="fa-solid fa-chevron-right fa-2x"></i>
   </button>
 </div>
       </div>
