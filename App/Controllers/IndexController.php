@@ -16,9 +16,10 @@
 		public function index(){
 			//Inicia com o controle dos dados
 			$produto=Container::getModel('produto');
+			//Historico Estoque
 			$totalRegistrosPaginaHE = 7;
 	 		$deslocamentoHE = 0;
-	 		$paginaHE=isset($_GET['produtosRecentes']) ? $_GET['produtosRecentes'] :1;
+	 		$paginaHE=isset($_GET['paginaHE']) ? $_GET['paginaHE'] :1;
 	 		$deslocamentoHE=($paginaHE -1)*$totalRegistrosPaginaHE;
 	 		//metade da paginação
 	 		$produtosHE = $produto->getPorPaginaHE($totalRegistrosPaginaHE, $deslocamentoHE);	 		
@@ -27,7 +28,6 @@
 			$this->view->totalPaginasHE=ceil($totalProdutosHE['total']/$totalRegistrosPaginaHE);			
 			$this->view->paginaAtivaHE=$paginaHE;
 	 		$this->view->produtosHE=$produtosHE;
-
 			//Rendeniza a index
 			$this->render('index');
 		}

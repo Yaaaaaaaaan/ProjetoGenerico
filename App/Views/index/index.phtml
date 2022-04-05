@@ -15,16 +15,17 @@
 
     
       <div class="corpo">
-        <span class=""><h3>Produtos recentes</h3>
+        <span><h3>Produtos recentes</h3>
         <h6>Verifique nossos produtos mais recentes abaixo!</h6></span>
-        
+        <div id="carouselExampleFade" class="carousel slide carousel-fade" data-bs-ride="carousel">
+          <div class="carousel-inner">
             <?php 
             $C=2;
               foreach($this->view->produtosHE as $codProd=>$produtoHE){
                 if($C==2){
                 ?>
                 
-              
+              <div class="carousel-item active">
                 <?php for ($i=0; $i <= 0; $i++) { 
                   foreach($this->view->produtosHE as $codProd=>$produtoHE){
                 
@@ -39,14 +40,33 @@
               </div>
              
                           
-            <?php $C=1; }}?>
-       
-       <div class="base">
-         <?php for($i=1;$i<= $this->view->totalPaginasHE; $i++){ ?>
-                <li class="circul"><a class="circul" href="?produtosRecentes=<?=$i?>"><?=$i?></a></li>
-                 <?php }?>
-        </div>
+            <?php $C=1; }else{ ?>
+              <div class="carousel-item">
+                 <?php for ($i=0; $i <= 0; $i++) { 
+                  foreach($this->view->produtosHE as $codProd=>$produtoHE){
+                
+                
+                 ?>
+                  <div class="infoBox">
+                  <img src="/img/sapatoteste.jpg">
+                  <p><?=$produtoHE['descProd']?> - <?=$produtoHE['tamProd']?></p>
+                  <span><?=$produtoHE["vlrUnitVen"]?></span>
+                </div> <?php }} ?>
+              </div>
 
+            <?php }}?>
+       </div>
+
+
+    
+  
+  <button class="ctrlBtnAn" type="button" data-bs-target="#carouselExampleFade" data-bs-slide="prev" >
+    <i class="fa-solid fa-chevron-left fa-2x"></i>
+  </button>
+  <button class="ctrlBtnPr" type="button" data-bs-target="#carouselExampleFade" data-bs-slide="next">
+   <i class="fa-solid fa-chevron-right fa-2x"></i>
+  </button>
+</div>
       </div>
     <footer>
       <p>&copy;2022 - Yan Fonseca.</p>
