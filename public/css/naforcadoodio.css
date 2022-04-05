@@ -71,3 +71,9 @@ body {
       .link-dado:hover{text-decoration:underline; font-weight: bold;color:#424242;}
 }
 }
+
+.caixaTeste{
+  background-color: black;
+  width: 500px;
+  height: 100%;
+}
