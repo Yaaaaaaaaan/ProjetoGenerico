@@ -20,6 +20,14 @@ body {
   justify-content: center;
   background-color: #f0f0f0;
 }
+.bodyInicial{
+  display: -ms-flexbox;
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: column;
+  justify-content: center;
+  background-color: #f0f0f0;
+}
 .form-signin {
   width: 100%;
   max-width: 330px;
