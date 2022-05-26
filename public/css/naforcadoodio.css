@@ -87,12 +87,14 @@ body {
   height: 100vh;
 }
 .corpo{
-
+background-color: rgba(51, 225, 245, 0.76);
 }
-.corpo span{}
+.corpo span, p{
+  color: whitesmoke;
+}
 .infoBox{
   float: left;
-  background-color: #f0f0f0;
+  background-color: rgba(51, 225, 245, 0.1);
   width: 175px;
   height: 305px;
   display: flex;
@@ -112,14 +114,14 @@ body {
   margin-top: 10px;
 }
 .infoBox:hover{
-  background-color: rgba(245, 222, 179, 0.1);
+  background-color: rgba(35, 185, 222, 0.13);
   box-shadow:25px 25px 25px rgba(0, 0, 0, 0.1);  
   transition: all 1s;
   }
 header{
 }
 .navegador{
-  background-image: linear-gradient(rgba(0, 0, 0, 0.15), rgba(255, 255, 255, 0.1));
+  background-image: linear-gradient(rgba(22, 91, 120, 0.77), rgba(35, 185, 222, 0.87));
 }
 .navegador .a , .ul, .li{
   text-decoration: none;
@@ -136,7 +138,7 @@ header{
   color: floralwhite;
 }
 footer{
-  background-color: rgba(0, 0, 0, 0.3);
+  background-color: rgba(22, 91, 120, 0.77);
   color: whitesmoke;
   padding: 45px 0 0 2%;
   font-size: 16px;
