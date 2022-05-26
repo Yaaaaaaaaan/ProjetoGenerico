@@ -82,9 +82,25 @@ body {
       .link-dado{font-weight: bold;color:#424242;text-decoration: none;}
       .link-dado:hover{text-decoration:underline; font-weight: bold;color:#424242;}
 .bannerTeste{
-  background-color: ;
+  background-image: url(../img/bannerTeste.jpg);
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
   width: 100%;
   height: 100vh;
+  position: relative;
+  background-attachment: fixed;
+  
+}
+.textoBanner{
+  box-shadow: rgba(22, 91, 120, 0.47);
+  display: flex;
+  justify-content: left;
+  flex-direction: column;
+  flex-wrap: wrap;
+  transform: translate(-50%, -50%);
+  color: whitesmoke;
+  
 }
 .corpo{
 background-color: rgba(51, 225, 245, 0.76);
@@ -123,16 +139,18 @@ header{
 .navegador{
   background-image: linear-gradient(rgba(22, 91, 120, 0.77), rgba(35, 185, 222, 0.87));
 }
-.navegador .a , .ul, .li{
+
+.navegador .a, .ul, .li{
+  list-style: none;
   text-decoration: none;
   color: whitesmoke;
-  list-style: none;
   display: flex;
   padding: 10px;
-  font-size: 16px;
+  font-size: 18px;
   justify-content: end;
   flex-direction: row;
   flex-wrap: wrap;
+  margin-bottom: -0.1vh;
 }
 .navegador .a:hover{
   color: floralwhite;
