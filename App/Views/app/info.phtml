@@ -24,12 +24,12 @@
   <input class="form-control form-control-dark w-100" type="text" placeholder="Pesquisa" aria-label="Search">
   <div class="navbar-nav">
     <div class="nav-item text-nowrap">
-      <a class="nav-link px-3 active" href="/info"><?= $_SESSION['nome']?></a>
+      <a class="nav-link px-3 active" href="/info"><i class="fa-solid fa-id-badge"></i> <?= $_SESSION['nome']?></a>
     </div>
   </div>
   <div class="navbar-nav">
     <div class="nav-item text-nowrap">
-      <a class="nav-link px-3" href="/sair">Sair</a>
+      <a class="nav-link px-3" href="/sair"><i class="fa-solid fa-door-open"></i> <i class="fa-solid fa-person-running"></i> Sair</a>
     </div>
   </div>
 </header>
@@ -108,57 +108,58 @@
 
     <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
       <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
-      <?php if($_SESSION['rank']<9){ 
-        error_reporting(0);?>
         
-             <h1 class="h2">Configurações Básicas</h1>
-        <form class="form-inline" action="/alterarSenha" method="post">
+          <?php if($_SESSION['rank']<9){ 
+            error_reporting(0);?>
+            
+                 <h1 class="h2">Configurações Básicas</h1>
+            <form class="form-inline" action="/alterarSenha" method="post">
 
-            <div class="form-group mx-sm-3 mb-2">
-            <input type="text" class="form-control" value="<?= $_SESSION['id'];?>" name="idUsuario" hidden="hidden">
-            <label for="inputPassword1" class="sr-only">Senha atual</label>
-            <input type="password" class="form-control" value="<?php if($this->view->erroNewPass=='erro'){echo $this->view->usuario['oldpass'];} else{}?>" id="inputPassword2" required="" name="oldpass" placeholder="Senha atual">
-          </div>
-           <div class="form-group mx-sm-3 mb-2">
-            <label for="inputPassword2" class="sr-only">Nova senha</label>
-            <input type="password" class="form-control" value="<?php if($this->view->erroNewPass=='erro'){echo $this->view->usuario['newpass'];} else{}?>" id="inputPassword2" required="" placeholder="Nova senha" name="newpass">
-          </div>
-           <div class="row">
-             <button type="submit" class="btn btn-primary mx-sm-3 mb-2">Alterar senha</button>
-           </div>
-           <?php if($this->view->erroNewPass== 'erro'){ ?>
-        
-          <div class='row'>
-            <div class="col">
-              <span class="text text-danger">*Senha anterior inválida, ou, nova senha muito curta!</span>
-            </div>
-          </div> <?php } ?>
-        </form>  
-      <?php }else{ ?> 
+                <div class="form-group mx-sm-3 mb-2">
+                <input type="text" class="form-control" value="<?= $_SESSION['id'];?>" name="idUsuario" hidden="hidden">
+                <label for="inputPassword1" class="sr-only">Senha atual</label>
+                <input type="password" class="form-control" value="<?php if($this->view->erroNewPass=='erro'){echo $this->view->usuario['oldpass'];} else{}?>" id="inputPassword2" required="" name="oldpass" placeholder="Senha atual">
+              </div>
+               <div class="form-group mx-sm-3 mb-2">
+                <label for="inputPassword2" class="sr-only">Nova senha</label>
+                <input type="password" class="form-control" value="<?php if($this->view->erroNewPass=='erro'){echo $this->view->usuario['newpass'];} else{}?>" id="inputPassword2" required="" placeholder="Nova senha" name="newpass">
+              </div>
+               <div class="row">
+                 <button type="submit" class="btn btn-primary mx-sm-3 mb-2"><i class="fa-solid fa-floppy-disk"></i> Alterar senha</button>
+               </div>
+               <?php if($this->view->erroNewPass== 'erro'){ ?>
+            
+              <div class='row'>
+                <div class="col">
+                  <span class="text text-danger">*Senha anterior inválida, ou, nova senha muito curta!</span>
+                </div>
+              </div> <?php } ?>
+            </form>  
+          <?php }else{ ?> 
 
-             <h1 class="h2">Configurações Básicas</h1>
-        <form class="form-inline" action="/alterarSenha" method="post">
-            <div class="form-group mx-sm-3 mb-2">
-               <input type="text" class="form-control" value="<?= $_SESSION['id'];?>" name="idUsuario" hidden="hidden">
-            <label for="inputPassword1" class="sr-only">Senha atual</label>
-            <input type="password" class="form-control" value="<?php if($this->view->erroNewPass=='erro'){echo $this->view->usuario['oldpass'];} else{}?>" id="inputPassword2" required="" name="oldpass" placeholder="Senha atual">
-          </div>
-           <div class="form-group mx-sm-3 mb-2">
-            <label for="inputPassword2" class="sr-only">Nova senha</label>
-            <input type="password" class="form-control" value="<?php if($this->view->erroNewPass=='erro'){echo $this->view->usuario['newpass'];} else{}?>" id="inputPassword2" required="" placeholder="Nova senha" name="newpass">
-          </div>
-           <div class="row">
-             <button type="submit" class="btn btn-primary mx-sm-3 mb-2">Alterar senha</button>
-           </div>
-           <?php if($this->view->erroNewPass== 'erro'){ ?>
-        
-          <div class='row'>
-            <div class="col">
-              <span class="text text-danger">*Senha anterior inválida, ou, nova senha muito curta!</span>
-            </div>
-          </div> <?php } ?>
-        </form>
-      <?php } ?>
+                 <h1 class="h2">Configurações Básicas</h1>
+            <form class="form-inline" action="/alterarSenha" method="post">
+                <div class="form-group mx-sm-3 mb-2">
+                   <input type="text" class="form-control" value="<?= $_SESSION['id'];?>" name="idUsuario" hidden="hidden">
+                <label for="inputPassword1" class="sr-only">Senha atual</label>
+                <input type="password" class="form-control" value="<?php if($this->view->erroNewPass=='erro'){echo $this->view->usuario['oldpass'];} else{}?>" id="inputPassword2" required="" name="oldpass" placeholder="Senha atual">
+              </div>
+               <div class="form-group mx-sm-3 mb-2">
+                <label for="inputPassword2" class="sr-only">Nova senha</label>
+                <input type="password" class="form-control" value="<?php if($this->view->erroNewPass=='erro'){echo $this->view->usuario['newpass'];} else{}?>" id="inputPassword2" required="" placeholder="Nova senha" name="newpass">
+              </div>
+               <div class="row">
+                 <button type="submit" class="btn btn-primary mx-sm-3 mb-2"><i class="fa-solid fa-floppy-disk"></i>  Alterar senha</button>
+               </div>
+               <?php if($this->view->erroNewPass== 'erro'){ ?>
+            
+              <div class='row'>
+                <div class="col">
+                  <span class="text text-danger">*Senha anterior inválida, ou, nova senha muito curta!</span>
+                </div>
+              </div> <?php } ?>
+            </form>
+          <?php } ?>
       <div class="row">
         <div class="col">
           <h2>Informações Básicas</h2>
@@ -167,7 +168,7 @@
               <thead>
                 <tr>
                   <th>Código</th>
-                  <th>Nick</th>
+                  <th>Nome</th>
                   <th>Email</th>
                   <th>Rank</th>
                   <th>Data do Cadastro</th>
@@ -176,8 +177,8 @@
               </thead>
               <tbody>
                 <tr>
-                  <td>1,001</td>
-                  <td>Lorem</td>
+                  <td><?= $_SESSION['id'];?></td>
+                  <td><?= $_SESSION['nome'];?></td>
                   <td>ipsum</td>
                   <td>dolor</td>
                   <td>sit</td>
