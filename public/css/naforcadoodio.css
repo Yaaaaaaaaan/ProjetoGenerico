@@ -139,7 +139,6 @@ header{
 .navegador{
   background-image: linear-gradient(rgba(22, 91, 120, 0.77), rgba(35, 185, 222, 0.87));
 }
-
 .navegador .a, .ul, .li{
   list-style: none;
   text-decoration: none;
