@@ -121,16 +121,16 @@
             <h4 class="pt-3 pb-2 mb-3 border-bottom">Refatoração de senha</h4>
             <form class="form-inline card-body" action="/alterarSenha" method="post">
 
-                <div class="form-group mx-sm-3 mb-2">
+                <div class="input-group mb-2">
+                   <span class="input-group-text">Senha atual</span>
                 <input type="text" class="form-control" value="<?= $_SESSION['id'];?>" name="idUsuario" hidden="hidden">
-                <label for="inputPassword1" class="sr-only">Senha atual</label>
-                <input type="password" class="form-control" value="<?php if($this->view->erroNewPass=='erro'){echo $this->view->usuario['oldpass'];} else{}?>" id="inputPassword2" required="" name="oldpass" placeholder="Senha atual">
+                <input type="password" class="form-control" value="<?php if($this->view->erroNewPass=='erro'){echo $this->view->usuario['oldpass'];} else{}?>" id="inputPassword2" required="" name="oldpass" placeholder="Insira senha atual">
               </div>
-               <div class="form-group mx-sm-3 mb-2">
-                <label for="inputPassword2" class="sr-only">Nova senha</label>
-                <input type="password" class="form-control" value="<?php if($this->view->erroNewPass=='erro'){echo $this->view->usuario['newpass'];} else{}?>" id="inputPassword2" required="" placeholder="Nova senha" name="newpass">
+               <div class="input-group mb-2">
+                   <span class="input-group-text">Nova senha</span>
+                <input type="password" class="form-control" value="<?php if($this->view->erroNewPass=='erro'){echo $this->view->usuario['newpass'];} else{}?>" id="inputPassword2" required="" placeholder="Insira nova senha" name="newpass">
               </div>
-                <div class="d-grid gap-2 mx-sm-3 mb-2">
+                <div class="d-grid gap-2  mb-2">
                  <button type="submit" class="btn btn-primary"><i class="fa-solid fa-floppy-disk"></i> Alterar senha</button>
                </div>
                <?php if($this->view->erroNewPass== 'erro'){ ?>
@@ -147,14 +147,15 @@
             <form class="form-inline" action="/alterarSenha" method="post">
                 <div class="form-group mx-sm-3 mb-2">
                    <input type="text" class="form-control" value="<?= $_SESSION['id'];?>" name="idUsuario" hidden="hidden">
-                <label for="inputPassword1" class="sr-only">Senha atual</label>
-                <input type="password" class="form-control" value="<?php if($this->view->erroNewPass=='erro'){echo $this->view->usuario['oldpass'];} else{}?>" id="inputPassword2" required="" name="oldpass" placeholder="Senha atual">
+               <div class="input-group mx-sm-3 mb-2">
+                   <span class="input-group-text">Senha atual</span>
+                <input type="password" class="form-control" value="<?php if($this->view->erroNewPass=='erro'){echo $this->view->usuario['oldpass'];} else{}?>" id="inputPassword2" required="" name="oldpass" placeholder="Insira sua senha atual">
               </div>
-               <div class="form-group mx-sm-3 mb-2">
-                <label for="inputPassword2" class="sr-only">Nova senha</label>
-                <input type="password" class="form-control" value="<?php if($this->view->erroNewPass=='erro'){echo $this->view->usuario['newpass'];} else{}?>" id="inputPassword2" required="" placeholder="Nova senha" name="newpass">
+               <div class="input-group mx-sm-3 mb-2">
+                   <span class="input-group-text">Nova senha</span>
+                <input type="password" class="form-control" value="<?php if($this->view->erroNewPass=='erro'){echo $this->view->usuario['newpass'];} else{}?>" id="inputPassword2" required="" placeholder="Insira sua nova senha" name="newpass">
               </div>
-               <div class="d-grid gap-2 mx-sm-3 mb-2">
+               <div class="d-grid gap-2 mb-2">
                  <button type="submit" class="btn btn-primary"><i class="fa-solid fa-floppy-disk"></i> Alterar senha</button>
                </div>
                <?php if($this->view->erroNewPass== 'erro'){ ?>
@@ -168,13 +169,41 @@
           <?php } ?>
         </div>
       </div>
+      <br>
       <div class="row">
-        
+        <div class="col-md-2">
+        </div>
+                <div class="col-md-8 card">
+          <h4 class="pt-3 pb-2 mb-3 border-bottom">Seus dados</h4>
+        <form class="form-inline card-body">
         <div class="input-group mb-3">
-  <input type="text" class="form-control" placeholder="Recipient's username" aria-label="Recipient's username" aria-describedby="button-addon2">
-  <button class="btn btn-outline-secondary" type="button" id="button-addon2">Button</button>
+           <span class="input-group-text">Nome completo</span>
+  <input type="text" class="form-control" value="<?= $_SESSION['nome'];?>"  aria-describedby="button-addon2">
+  <button class="btn btn-outline-secondary" type="button" id="button-addon2">Editar</button>
 </div>
-      
+
+<!-- Pegar dados com PHP -->
+<div class="input-group mb-3">
+           <span class="input-group-text">Nick</span>
+  <input type="text" class="form-control" value="<?= $_SESSION['nome'];?>"  aria-describedby="button-addon2">
+  <button class="btn btn-outline-secondary" type="button" id="button-addon2">Editar</button>
+</div>
+<div class="input-group mb-3">
+           <span class="input-group-text">E-mail</span>
+  <input type="text" class="form-control" value="<?= $_SESSION['nome'];?>"  aria-describedby="button-addon2">
+  <button class="btn btn-outline-secondary" type="button" id="button-addon2">Editar</button>
+</div>
+<div class="input-group mb-3">
+           <span class="input-group-text">Nascimento</span>
+  <input type="date" class="form-control" value="<?= $_SESSION['nome'];?>"  aria-describedby="button-addon2">
+  <button class="btn btn-outline-secondary" type="button" id="button-addon2">Editar</button>
+</div>
+<div class="input-group mb-3">
+           <span class="input-group-text">Última alteração</span>
+  <input type="text" class="form-control" value="<?= $_SESSION['nome'];?>"  aria-describedby="button-addon2">
+</div>
+</form>
+      </div>
       </div>
       <div class="row">
         <div class="col">
