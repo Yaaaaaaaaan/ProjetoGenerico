@@ -50,7 +50,7 @@
 				$this->render('info');
 		}}
 
-		public function postProd(){
+		/*public function postProd(){
 			$this->validaAutenticacao();
 			$produto= Container::getModel('produto');
 			$produto->__set('descProd',$_POST['descProd']);
@@ -59,6 +59,6 @@
 			$produto->salvar();
 			//$this->render('produtos');
 			header("Location: /produtos");
-		}
+		}*/
 	}
 ?>
