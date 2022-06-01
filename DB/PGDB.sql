@@ -11,14 +11,23 @@ create table usuario(
 	dataCad datetime default current_timestamp,
 	dataAlt datetime default current_timestamp
 );
-create table dadosUsuario(
-	codDadosU int(11) not null  auto_increment primary key,
-	idDadosUFk int(11) not null unique,
-	cpfDadosU varchar(32) null unique,
-	rgDadosU varchar(32) null unique,
-	dataNasc date not null,
-	rankDados int(1) not null,
-	foreign key (idDadosUFk) references usuario (idUsuario)
+create table fornecedor(
+	codFornecedor int(11) not null auto_increment primary key,
+	nomeFornecedor varchar(100) not null unique,
+	dataCad datetime default current_timestamp,
+	dataAlt datetime default current_timestamp
+);
+create table dadosUsFo(
+	codDadosUsFo int(11) not null  auto_increment primary key,
+	idDadosUsFoFk int(11) null unique,
+	codDadosUsFoFk int(11) null unique,
+	cpfDadosUsFo varchar(32) null unique,
+	rgDadosUsFo varchar(32) null unique,
+	CNPJDadosUsFo varchar(32) null unique,
+	dataNasc date null,
+	rankDados int(1) null,
+	foreign key (idDadosUsFoFk) references usuario (idUsuario),
+	foreign key (codDadosUsFoFk) references fornecedor (codFornecedor)
 );
 create table classeProd(
 	codClasseProd int(11) not null auto_increment primary key,
@@ -49,11 +58,18 @@ create table entradaProduto(
 	foreign key (codProdFkEnt) references produto (codProd),
 	foreign key (idUsuarioFkEnt) references usuario (idUsuario)
 );
+create table baseCalc(
+	codBaseCalc int(11) not null auto_increment primary key,
+	baseCalc DECIMAL(9,2) null default '0.00',
+	dataIncl datetime default current_timestamp,
+	idUsuarioFkBasC int(11),
+	foreign key (idUsuarioFkBasC) references usuario (idUsuario)
+);
 create table configSistema(
 	codConfigSistema int(11) not null auto_increment primary key,
-	descConf int()
+	descConf int(11) not null,
 	idUsuarioFkConfS int(11) not null,
-	foreign key (idUsuarioFkConf) references usuario (idUsuario)
+	foreign key (idUsuarioFkConfS) references usuario (idUsuario)
 );
 create table estoque(
 	codEst int(11) not null AUTO_INCREMENT primary key,

@@ -16,10 +16,10 @@ class Usuario extends Model{
 		$this->$atributo=$valor;
 	}
 
-	public function salvar(){ // INSERTS DE USUARIOS E DADOS DO MESMO.
+	public function salvar(){
 		$query="BEGIN; 
 		INSERT INTO usuario (nomeUsuario,nickUsuario,emailUsuario,senhaUsuario) values (:nome,:nick,:email,:senha);
-		INSERT INTO dadosUsuario (idDadosUFk,rankDados) VALUES (last_insert_id(), '1');
+		INSERT INTO dadosUsFo (idDadosUsFoFk,rankDados) VALUES (last_insert_id(), '1');
 		INSERT INTO historico (nomeTablHist, codLinhaInfoHist, descHist, idUsuarioFkHist) VALUES ('usuario',last_insert_id(), 'Cadastro no sistema', last_insert_id());
 		COMMIT;";
 
@@ -28,9 +28,6 @@ class Usuario extends Model{
 		$stmt->bindValue(':nick', $this->__get("nick"));
 		$stmt->bindValue(':email', $this->__get("email"));
 		$stmt->bindValue(':senha', $this->__get("senha"));
-		//$stmt->bindValue(':cpfUsuario', $this->__get("cpfDadosU"));
-		//$stmt->bindValue(':rgUsuario', $this->__get("rgDadosU"));
-		//$stmt->bindValue(':rank', $this->__get("rankDados"));
 		$stmt->execute();
 		return $this;
 	}
@@ -58,7 +55,7 @@ class Usuario extends Model{
 		return $stmt->fetchAll(\PDO::FETCH_ASSOC);
 	}
 	public function autenticar(){
-		$query= "select idUsuario, nomeUsuario, nickUsuario, emailUsuario, rankDados from usuario JOIN dadosUsuario on idUsuario = IdDadosUFk where senhaUsuario = :senha and (:email = nickUsuario OR emailUsuario = :email)";
+		$query= "select idUsuario, nomeUsuario, nickUsuario, emailUsuario, rankDados from usuario JOIN dadosUsFo on idUsuario = idDadosUsFoFk where senhaUsuario = :senha and (:email = nickUsuario OR emailUsuario = :email)";
 		$stmt=$this->db->prepare($query);
 		$stmt->bindValue(':email', $this->__get('email'));
 		$stmt->bindValue(':senha', $this->__get('senha'));
@@ -113,6 +110,22 @@ class Usuario extends Model{
 			$valido = true;
 			return $valido;
 		}	
+	}
+	public function salvaDados(){
+		$query="
+			UPDATE dadosUsFo(
+				cpfDadosUsFo,rgDadosUsFo,dataNasc
+					) VALUES (:cpfUs,:rgUs,:dataNasc) WHERE idDadosUsFoFk = :idUsuario;
+						 
+				INSERT INTO historico (nomeTablHist,codLinhaInfoHist,descHist,idUsuarioFkHist) values ('Dados de usuario',:idUsuario,'Inserção de dados',:idUsuario)
+				";
+		$stmt= $this->db->prepare($query);
+		$stmt->bindValue(':cpfUs', $this->__get("cpfUs"));
+		$stmt->bindValue(':rgUs', $this->__get("rgUs"));
+		$stmt->bindValue(':dataNasc', $this->__get("dataNasc"));
+		$stmt->bindValue(':idUsuario', $this->__get("idUsuario"));
+		$stmt->execute();
+		return $this;
 	}
 }
 ?>
