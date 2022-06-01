@@ -23,7 +23,7 @@ create table dadosUsFo(
 	codDadosUsFoFk int(11) null unique,
 	cpfDadosUsFo varchar(32) null unique,
 	rgDadosUsFo varchar(32) null unique,
-	CNPJDadosUsFo varchar(32) null unique,
+	cnpjDadosUsFo varchar(32) null unique,
 	dataNasc date null,
 	rankDados int(1) null,
 	foreign key (idDadosUsFoFk) references usuario (idUsuario),
@@ -91,7 +91,7 @@ create table saidaProduto (
 	foreign key (idUsuarioFkSai) references usuario (idUsuario)
 );
 create table transacao(
-	codTransacao Int(11) not null auto_increment primary key,
+	codTransacao Int(11) not null auto_increment primary key
 	
 );
 create table docs(

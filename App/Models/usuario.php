@@ -7,22 +7,18 @@ class Usuario extends Model{
 	private $nome;
 	private $nick;
 	private $senha;
-
 	public function __get($atributo){
 		return $this->$atributo;
 	}
-
 	public function __set($atributo,$valor){
 		$this->$atributo=$valor;
 	}
-
 	public function salvarNovoUsuario(){
 		$query="BEGIN; 
 		INSERT INTO usuario (nomeUsuario,nickUsuario,emailUsuario,senhaUsuario) values (:nome,:nick,:email,:senha);
 		INSERT INTO dadosUsFo (idDadosUsFoFk,rankDados) VALUES (last_insert_id(), '1');
 		INSERT INTO historico (nomeTablHist, codLinhaInfoHist, descHist, idUsuarioFkHist) VALUES ('usuario',last_insert_id(), 'Cadastro no sistema', last_insert_id());
 		COMMIT;";
-
 		$stmt= $this->db->prepare($query);
 		$stmt->bindValue(':nome', $this->__get("nome"));
 		$stmt->bindValue(':nick', $this->__get("nick"));
@@ -82,12 +78,10 @@ class Usuario extends Model{
 		$stmt->execute();
 		return $this;
 	}
-	
 	public function salvaNovaSenha(){
 		$query="
-				UPDATE usuario SET senhaUsuario = :newpass WHERE senhaUsuario = :oldpass;
-						 
-				INSERT INTO historico (nomeTablHist,codLinhaInfoHist,descHist,idUsuarioFkHist) values ('usuario',:idUsuario,'Alteração de senha',:idUsuario)
+			UPDATE usuario SET senhaUsuario = :newpass WHERE senhaUsuario = :oldpass;	 
+			INSERT INTO historico (nomeTablHist,codLinhaInfoHist,descHist,idUsuarioFkHist) values ('usuario',:idUsuario,'Alteração de senha',:idUsuario)
 				";
 		$stmt= $this->db->prepare($query);
 		$stmt->bindValue(':newpass', $this->__get("newpass"));
@@ -116,7 +110,6 @@ class Usuario extends Model{
 			UPDATE dadosUsFo(
 				cpfDadosUsFo,rgDadosUsFo,dataNasc
 					) VALUES (:cpfUs,:rgUs,:dataNasc) WHERE idDadosUsFoFk = :idUsuario;
-						 
 				INSERT INTO historico (nomeTablHist,codLinhaInfoHist,descHist,idUsuarioFkHist) values ('Dados de usuario',:idUsuario,'Inserção de dados',:idUsuario)
 				";
 		$stmt= $this->db->prepare($query);
@@ -129,10 +122,12 @@ class Usuario extends Model{
 	}
 	public function salvarDadosFornecedor(){
 		$query="
-			UPDATE dadosUsFo(
-				cpfDadosUsFo,rgDadosUsFo,dataNasc
-					) VALUES (:cpfUs,:rgUs,:dataNasc) WHERE idDadosUsFoFk = :idUsuario;
-						 
+		INSERT INTO fornecedor(
+			nomeFornecedor)
+			VALUES(:nomeForn);
+			INSERT into dadosUsFo(
+				cnpjDadosUsFo,codDadosUsFoFk,dataNasc
+					) VALUES (:cnpjForn,last_insert_id(),:dataNasc); 
 				INSERT INTO historico (nomeTablHist,codLinhaInfoHist,descHist,idUsuarioFkHist) values ('Dados de usuario',:idUsuario,'Inserção de dados',:idUsuario)
 				";
 		$stmt= $this->db->prepare($query);
