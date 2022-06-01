@@ -16,8 +16,16 @@ create table dadosUsuario(
 	idDadosUFk int(11) not null unique,
 	cpfDadosU varchar(32) null unique,
 	rgDadosU varchar(32) null unique,
+	dataNasc date not null,
 	rankDados int(1) not null,
 	foreign key (idDadosUFk) references usuario (idUsuario)
+);
+create table classeProd(
+	codClasseProd int(11) not null auto_increment primary key,
+	classeBase varchar(255) not null, /* Ex: Alimenticio, Vestuario */
+	classeDivisao varchar(255) not null, /* Ex: Perecivel, não Perecivel, Camisa, Cueca */
+	idUsuarioFkClass int(11) not null,
+	foreign key (idUsuarioFkClass) references usuario (idUsuario)
 );
 create table produto(
 	codProd int(11) not null auto_increment primary key,
@@ -26,9 +34,10 @@ create table produto(
 	tamProd varchar(5) null default null,
 	estMinProd int(11) null default null,
 	estMaxProd int(11) null default null,
-	classeProd varchar(20) not null,
+	classeProd int(11) not null,
 	idUsuarioFkProd int(11) not null,
-	foreign key (idUsuarioFkProd) references usuario (idUsuario)
+	foreign key (idUsuarioFkProd) references usuario (idUsuario),
+	foreign key (classeProd) references classeProd (codClasseProd)
 );
 create table entradaProduto(
 	codEntProd INT(11) NOT NULL AUTO_INCREMENT primary key,
@@ -40,11 +49,18 @@ create table entradaProduto(
 	foreign key (codProdFkEnt) references produto (codProd),
 	foreign key (idUsuarioFkEnt) references usuario (idUsuario)
 );
+create table configSistema(
+	codConfigSistema int(11) not null auto_increment primary key,
+	descConf int()
+	idUsuarioFkConfS int(11) not null,
+	foreign key (idUsuarioFkConf) references usuario (idUsuario)
+);
 create table estoque(
 	codEst int(11) not null AUTO_INCREMENT primary key,
 	codProdFkEst  INT(11) UNIQUE,
 	qtde  INT(11) NULL DEFAULT NULL,
 	vlrUnitCom  DECIMAL(9,2) NULL DEFAULT '0.00',
+	baseCalc DECIMAL(9,2) null default '0.00',
 	vlrUnitVen  DECIMAL(9,2) NULL DEFAULT '0.00',
 	foreign key (codProdFkEst) references produto (codProd)
 );
@@ -82,6 +98,7 @@ create table historico(
 	nomeTablHist varchar(255) not null,
 	codLinhaInfoHist int(11) not null,
 	descHist varchar(255) not null,
+	infoAnte varchar(255) null,
 	idUsuarioFkHist int(11) not null,
 	dataHist datetime default current_timestamp,
 	foreign key (idUsuarioFkHist) references usuario (idUsuario)
