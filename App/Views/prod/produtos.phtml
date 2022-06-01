@@ -102,9 +102,9 @@
             </a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#">
+            <a class="nav-link" data-bs-toggle="modal" data-bs-target="#novaClasse" type="button">
               <span data-feather="file-text"></span>
-              Year-end sale
+              Classes
             </a>
           </li>
         </ul>
@@ -312,7 +312,56 @@
         </div>
       </div>
     </div>
-</div>
+    <div class="modal fade" id="novaClasse" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="novaClasseLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="novaClasseLabel">Nova classe</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+        <form method="POST" action="/postProd">
+           <div class="modal-body">
+              <div class="mb-3 row">
+                <div class="col-12">
+                  <input type="text" name="idUsuario" value="<?= $_SESSION['id'];?>" hidden="hidden">
+                  <label for="classeBase" class="col-form-label">Classe base:</label>
+                  <input type="text" class="form-control" id="classeBase" name="classeBase"  placeholder="Ex: Alimenticio, Vestuario ">
+                </div>
+              </div>
+              <div class="mb-3 row">
+                <div class="col-12">
+                  <label for="classeDivi" class="col-form-label">Divisão de classe</label>
+                  <input type="text" class="form-control" id="classeDivi" name="classeDivi"  placeholder="Ex: Perecivel, não Perecivel, Camisa, Cueca">
+                </div>
+              </div>
+                <h6 class="h6 pt-3 pb-2 mb-3 border-bottom">Classes e divisões atuais</h6>
+                <div class="mb-3 row">
+                  <div class="col-6">
+                    <label for="classeProd" class="col-form-label">Classe:</label>
+                    <select class="form-select" aria-label="Default select example" name="classeProd" id="classeProd">
+                      <option value="Alimenticio">Alimentício</option>
+                      <option value="Vestuario">Vestuário</option>
+                    </select>
+                  </div>
+                  <div class="col-6">
+                    <label for="classeProd" class="col-form-label">Divisão:</label>
+                    <select class="form-select" aria-label="Default select example" name="classeProd" id="classeProd">
+                      <option value="Alimenticio">Alimentício</option>
+                      <option value="Vestuario">Vestuário</option>
+                    </select>
+                  </div>
+                </div>
+              </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-danger" data-bs-dismiss="modal" aria-label="Close">Cancelar</button>
+              <button type="reset" class="btn btn-warning">Limpar</button>
+              <button type="submit" class="btn btn-success">Salvar</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
 
 <script type="text/javascript">
   var editaProd = document.getElementById('editaProd')
@@ -341,6 +390,7 @@
     var setestMaxProd = editaProd.querySelector('#estMaxProd')
     var setclasseProd = editaProd.querySelector('#classeProd')
     var setidUsuarioFkProd = editaProd.querySelector('#idUsuarioFkProd')
+
 
 
 //Exibindo valores recebidos nas variáveis no input dentro do modal <--
