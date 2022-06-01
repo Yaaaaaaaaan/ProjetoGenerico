@@ -24,21 +24,17 @@ class Produto extends Model{
 			INSERT INTO historico (nomeTablHist,codLinhaInfoHist,descHist,idUsuarioFkHist) values ('classe',last_insert_id(),'nova classe',:idUsuarioFkProd);
 			COMMIT;";
 		$stmt= $this->db->prepare($query);
-		$stmt->bindValue(':descProd',$this->__get('descProd'));
-		$stmt->bindValue(':tamProd',$this->__get('tamProd'));
-		$stmt->bindValue(':estMinProd',$this->__get('estMinProd'));
-		$stmt->bindValue(':estMaxProd',$this->__get('estMaxProd'));
-		$stmt->bindValue(':classeProd',$this->__get('classeProd'));
-		$stmt->bindValue(':idUsuarioFkProd',$this->__get('idUsuario'));
+		$stmt->bindValue(':classeBase',$this->__get('classeBase'));
+		$stmt->bindValue(':classeDivisao',$this->__get('classeDivisao'));
+		$stmt->bindValue(':idUsuarioFkClass',$this->__get('idUsuarioFkClass'));
 		$stmt->execute();
 		return $this;
 	}
 	public function salvarProd(){
 		$query ="
-		BEGIN;
 			INSERT INTO produto(descProd,tamProd,estMinProd,estMaxProd,classeProd,idUsuarioFkProd) VALUES(:descProd,:tamProd,:estMinProd,:estMaxProd,:classeProd, :idUsuarioFkProd);
 			INSERT INTO historico (nomeTablHist,codLinhaInfoHist,descHist,idUsuarioFkHist) values ('produto',last_insert_id(),'novo produto',:idUsuarioFkProd);
-			COMMIT;";
+			";
 		$stmt= $this->db->prepare($query);
 		$stmt->bindValue(':descProd',$this->__get('descProd'));
 		$stmt->bindValue(':tamProd',$this->__get('tamProd'));
