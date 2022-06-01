@@ -187,7 +187,7 @@ class Produto extends Model{
 		COMMIT;
 			UPDATE
 				estoque SET vlrUnitVen = :vlrUnitVen WHERE codProdFkEst= :codProd;
-				INSERT INTO historico(nomeTablHist, codLinhaInfoHist, descHist, idUsuarioFkHist) VALUES('estoque',:codProd, 'Alteração de preço de venda', :idUsuario);
+				INSERT INTO historico(nomeTablHist, codLinhaInfoHist, descHist, idUsuarioFkHist, infoAnte) VALUES('estoque',:codProd, 'Alteração de preço de venda', :idUsuario,(SELECT vlrUnitVen from estoque WHERE codLinhaInfoHist = codProd));
 				BEGIN;
 			";
 		$stmt= $this->db->prepare($query);
