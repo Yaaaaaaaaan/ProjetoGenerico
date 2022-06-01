@@ -20,7 +20,19 @@ class Produto extends Model{
 	public function salvarClasse(){
 		$query ="
 			INSERT INTO classeProd(classeBase,classeDivisao,idUsuarioFkClass) VALUES(:classeBase,:classeDivisao,:idUsuarioFkClass);
-			INSERT INTO historico (nomeTablHist,codLinhaInfoHist,descHist,idUsuarioFkHist) values ('classe',last_insert_id(),'nova classe',:idUsuarioFkProd);
+			INSERT INTO historico (nomeTablHist,codLinhaInfoHist,descHist,idUsuarioFkHist) values ('classe',last_insert_id(),'nova classe',:idUsuarioFkClass);
+			";
+		$stmt= $this->db->prepare($query);
+		$stmt->bindValue(':classeBase',$this->__get('classeBase'));
+		$stmt->bindValue(':classeDivisao',$this->__get('classeDivisao'));
+		$stmt->bindValue(':idUsuarioFkClass',$this->__get('idUsuarioFkClass'));
+		$stmt->execute();
+		return $this;
+	}
+	public function salvarBaseCalc(){
+		$query ="
+			INSERT INTO baseCalc(baseCalc,idUsuarioFkBasC) VALUES(:baseCalc,:idUsuarioFkBasC);
+			INSERT INTO historico (nomeTablHist,codLinhaInfoHist,descHist,idUsuarioFkHist) values ('Base de cálculo',last_insert_id(),'nova informação',:idUsuarioFkBasC);
 			";
 		$stmt= $this->db->prepare($query);
 		$stmt->bindValue(':classeBase',$this->__get('classeBase'));
@@ -31,7 +43,7 @@ class Produto extends Model{
 	}
 	public function salvarProd(){
 		$query ="
-			INSERT INTO produto(descProd,tamProd,estMinProd,estMaxProd,classeProd,idUsuarioFkProd) VALUES(:descProd,:tamProd,:estMinProd,:estMaxProd,:classeProd, :idUsuarioFkProd);
+			INSERT INTO produto(descProd,tamProd,estMinProd,estMaxProd,classeProd,idUsuarioFkProd) VALUES(:descProd,:tamProd,:estMinProd,:estMaxProd,:classeProd, /*Precisa buscar COD no banco de dados e usar uma select*/:idUsuarioFkProd);
 			INSERT INTO historico (nomeTablHist,codLinhaInfoHist,descHist,idUsuarioFkHist) values ('produto',last_insert_id(),'novo produto',:idUsuarioFkProd);
 			";
 		$stmt= $this->db->prepare($query);
