@@ -38,11 +38,8 @@
 			$usuario->__set('nick', $_POST['nick']);
 			$usuario->__set('email', $_POST['email']);
 			$usuario->__set('senha',md5($_POST['senha']));
-			//$usuario->__set('cpfUsuario',md5($_POST['cpfUsuario']));
-			//$usuario->__set('rgUsuario',md5($_POST['rgUsuario']));
-
 			if($usuario->validarcadastro() && count($usuario->getUsuarioPorEmail())==0){
-				$usuario->salvar();	
+				$usuario->salvarNovoUsuario();	
 				$this->render('cadastro');
 			}else {
 				$this->view->usuario=array('nome'=>$_POST['nome'],'nick'=>$_POST['nick'],'email'=>$_POST['email'],'senha'=>$_POST['senha'],);

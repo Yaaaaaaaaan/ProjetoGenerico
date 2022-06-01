@@ -16,7 +16,7 @@ class Usuario extends Model{
 		$this->$atributo=$valor;
 	}
 
-	public function salvar(){
+	public function salvarNovoUsuario(){
 		$query="BEGIN; 
 		INSERT INTO usuario (nomeUsuario,nickUsuario,emailUsuario,senhaUsuario) values (:nome,:nick,:email,:senha);
 		INSERT INTO dadosUsFo (idDadosUsFoFk,rankDados) VALUES (last_insert_id(), '1');
@@ -111,7 +111,23 @@ class Usuario extends Model{
 			return $valido;
 		}	
 	}
-	public function salvaDados(){
+	public function salvarDadosUsuario(){
+		$query="
+			UPDATE dadosUsFo(
+				cpfDadosUsFo,rgDadosUsFo,dataNasc
+					) VALUES (:cpfUs,:rgUs,:dataNasc) WHERE idDadosUsFoFk = :idUsuario;
+						 
+				INSERT INTO historico (nomeTablHist,codLinhaInfoHist,descHist,idUsuarioFkHist) values ('Dados de usuario',:idUsuario,'Inserção de dados',:idUsuario)
+				";
+		$stmt= $this->db->prepare($query);
+		$stmt->bindValue(':cpfUs', $this->__get("cpfUs"));
+		$stmt->bindValue(':rgUs', $this->__get("rgUs"));
+		$stmt->bindValue(':dataNasc', $this->__get("dataNasc"));
+		$stmt->bindValue(':idUsuario', $this->__get("idUsuario"));
+		$stmt->execute();
+		return $this;
+	}
+	public function salvarDadosFornecedor(){
 		$query="
 			UPDATE dadosUsFo(
 				cpfDadosUsFo,rgDadosUsFo,dataNasc
