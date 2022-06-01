@@ -19,10 +19,9 @@ class Produto extends Model{
 	}
 	public function salvarClasse(){
 		$query ="
-		BEGIN;
 			INSERT INTO classeProd(classeBase,classeDivisao,idUsuarioFkClass) VALUES(:classeBase,:classeDivisao,:idUsuarioFkClass);
 			INSERT INTO historico (nomeTablHist,codLinhaInfoHist,descHist,idUsuarioFkHist) values ('classe',last_insert_id(),'nova classe',:idUsuarioFkProd);
-			COMMIT;";
+			";
 		$stmt= $this->db->prepare($query);
 		$stmt->bindValue(':classeBase',$this->__get('classeBase'));
 		$stmt->bindValue(':classeDivisao',$this->__get('classeDivisao'));
