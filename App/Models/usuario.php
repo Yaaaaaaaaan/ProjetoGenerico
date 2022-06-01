@@ -138,5 +138,20 @@ class Usuario extends Model{
 		$stmt->execute();
 		return $this;
 	}
+	salvarConfigSistema(){
+		$query="
+		INSERT INTO configSistema(
+			descConf, idUsuarioFkConfS)
+			VALUES(:descConf,:idUsuarioFkConfS);
+				INSERT INTO historico (nomeTablHist,codLinhaInfoHist,descHist,idUsuarioFkHist) values ('Configuração do sistema',:idUsuario,'Inserção de parâmetros',:idUsuario)
+				";
+		$stmt= $this->db->prepare($query);
+		$stmt->bindValue(':cpfUs', $this->__get("cpfUs"));
+		$stmt->bindValue(':rgUs', $this->__get("rgUs"));
+		$stmt->bindValue(':dataNasc', $this->__get("dataNasc"));
+		$stmt->bindValue(':idUsuario', $this->__get("idUsuario"));
+		$stmt->execute();
+		return $this;
+	}
 }
 ?>
