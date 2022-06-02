@@ -32,6 +32,17 @@
 	 		$this->view->produtosI=$produtosI;
 	 		$this->render('produtos');
 		}
+		public function salvarClasse(){
+			$this->validaAutenticacao();
+			$produto= Container::getModel('produto');
+			$produto->__set('classeBase',$_POST['classeBase']);
+			$produto->__set('classeDivisao',$_POST['classeDivisao']);
+			$produto->__set('idUsuarioFkClass',$_POST['idUsuario']);
+			$produto->salvarClasse();
+			echo '<script>history.go(-1);</script>';
+			//$this->render('produtos');
+			//header("Location: /produtos");
+		}
 		public function postProd(){
 			$this->validaAutenticacao();
 			$produto= Container::getModel('produto');

@@ -99,6 +99,11 @@
 				'controller'=>'prodController',
 				'action'=>'exibeProd'
 			);
+			$routes['salvarClasse'] = array(
+				'route' =>'/salvarClasse',
+				'controller'=>'prodController',
+				'action'=>'salvarClasse'
+			);
 			$routes['postProd'] = array(
 				'route' =>'/postProd',
 				'controller'=>'prodController',
