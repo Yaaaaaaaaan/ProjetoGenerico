@@ -138,7 +138,7 @@ class Usuario extends Model{
 		$stmt->execute();
 		return $this;
 	}
-	salvarConfigSistema(){
+	public function salvarConfigSistema(){
 		$query="
 		INSERT INTO configSistema(
 			descConf, idUsuarioFkConfS)
