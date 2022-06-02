@@ -32,7 +32,7 @@ create table dadosUsFo(
 create table classeProd(
 	codClasseProd int(11) not null auto_increment primary key,
 	classeBase varchar(255) not null, /* Ex: Alimenticio, Vestuario */
-	classeDivisao varchar(255) not null, /* Ex: Perecivel, não Perecivel, Camisa, Cueca */
+	classeDivisao varchar(255) not null unique, /* Ex: Perecivel, não Perecivel, Camisa, Cueca */
 	idUsuarioFkClass int(11) not null,
 	foreign key (idUsuarioFkClass) references usuario (idUsuario)
 );

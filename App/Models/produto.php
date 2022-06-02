@@ -20,7 +20,7 @@ class Produto extends Model{
 	public function salvarClasse(){
 		$query ="
 			INSERT INTO classeProd(classeBase,classeDivisao,idUsuarioFkClass) VALUES(:classeBase,:classeDivisao,:idUsuarioFkClass);
-			INSERT INTO historico (nomeTablHist,codLinhaInfoHist,descHist,idUsuarioFkHist) values ('classe',last_insert_id(),'nova classe',:idUsuarioFkClass);
+			INSERT INTO historico (nomeTablHist,codLinhaInfoHist,descHist,idUsuarioFkHist) VALUES ('classe',last_insert_id(),'nova classe',:idUsuarioFkClass);
 			";
 		$stmt= $this->db->prepare($query);
 		$stmt->bindValue(':classeBase',$this->__get('classeBase'));
@@ -32,7 +32,7 @@ class Produto extends Model{
 	public function salvarBaseCalc(){
 		$query ="
 			INSERT INTO baseCalc(baseCalc,idUsuarioFkBasC) VALUES(:baseCalc,:idUsuarioFkBasC);
-			INSERT INTO historico (nomeTablHist,codLinhaInfoHist,descHist,idUsuarioFkHist) values ('Base de cálculo',last_insert_id(),'nova informação',:idUsuarioFkBasC);
+			INSERT INTO historico (nomeTablHist,codLinhaInfoHist,descHist,idUsuarioFkHist) VALUES ('Base de cálculo',last_insert_id(),'nova informação',:idUsuarioFkBasC);
 			";
 		$stmt= $this->db->prepare($query);
 		$stmt->bindValue(':classeBase',$this->__get('classeBase'));
@@ -59,8 +59,8 @@ class Produto extends Model{
 	public function editarProd(){
 		$query ="
 		BEGIN;
-			update produto set descProd= :descProd ,tamProd= :tamProd ,estMinProd= :estMinProd ,estMaxProd= :estMaxProd ,classeProd= :classeProd where codProd= :codProd;
-			insert into historico(nomeTablHist, codLinhaInfoHist, descHist, idUsuarioFkHist) values('produto',:codProd, 'Alteração de dados', :idUsuario);
+			UPDATE produto SET descProd= :descProd ,tamProd= :tamProd ,estMinProd= :estMinProd ,estMaxProd= :estMaxProd ,classeProd= :classeProd WHERE codProd= :codProd;
+			INSERT INTO historico(nomeTablHist, codLinhaInfoHist, descHist, idUsuarioFkHist) VALUES('produto',:codProd, 'Alteração de dados', :idUsuario);
 			COMMIT;";
 		$stmt= $this->db->prepare($query);
 		$stmt->bindValue(':codProd',$this->__get('codProd'));
@@ -90,15 +90,15 @@ class Produto extends Model{
 
 	public function getPorPagina($limit, $offset){
 		$query="
-			select 
+			SELECT 
 				codProd,statusProd,descProd,tamProd,estMinProd,estMaxProd,classeProd,idUsuarioFkProd
-			from 
+			FROM 
 				produto
-			where 
+			WHERE 
 				statusProd = 'A'
-			order by
-				codProd asc
-				limit
+			ORDER BY
+				codProd ASC
+				LIMIT
 					$limit
 				offset
 					$offset
@@ -109,15 +109,33 @@ class Produto extends Model{
 	}
 	public function getTotalRegistros(){
 		$query="
-			select 
-				count(*) as total 
-				from 
+			SELECT 
+				COUNT(*) as total 
+				FROM 
 				produto
 				WHERE statusProd ='A'	
 		";
 		$stmt=$this->db->prepare($query);
 		$stmt->execute();
 		return $stmt->fetch(\PDO::FETCH_ASSOC);
+	}
+	public function getTotalClasseBase(){
+		$query="
+			SELECT classeBase, codClasseProd FROM
+				classeProd GROUP BY classeBase 
+		";
+		$stmt=$this->db->prepare($query);
+		$stmt->execute();
+		return $stmt->fetchAll(\PDO::FETCH_ASSOC);
+	}
+	public function getTotalClasseDivisao(){
+		$query="
+			SELECT codClasseProd, classeDivisao FROM
+				classeProd	
+		";
+		$stmt=$this->db->prepare($query);
+		$stmt->execute();
+		return $stmt->fetchAll(\PDO::FETCH_ASSOC);
 	}
 	public function getPorPaginaI($limit, $offset){
 		$query="

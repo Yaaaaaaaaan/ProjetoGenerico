@@ -30,6 +30,11 @@
 			$this->view->paginaAtivaI=$paginaI;
 	 		$this->view->produtos=$produtos;
 	 		$this->view->produtosI=$produtosI;
+	 		/*demais funções*/
+	 		$classeProdTotal=$produto->getTotalClasseBase();
+	 		$this->view->classeProdTotal=$classeProdTotal;
+	 		$divisaoProdTotal=$produto->getTotalClasseDivisao();
+	 		$this->view->divisaoProdTotal=$divisaoProdTotal;
 	 		$this->render('produtos');
 		}
 		public function salvarClasse(){
