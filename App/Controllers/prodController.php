@@ -9,6 +9,9 @@
 				header("Location: /login?login=erro");
 			}
 		}
+		public function exibeClasses(){
+			echo json_encode('load states');
+		}
 		public function exibeProd(){
 			$this->validaAutenticacao();
 	 		$produto=Container::getModel('produto');

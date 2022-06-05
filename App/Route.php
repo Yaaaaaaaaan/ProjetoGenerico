@@ -5,7 +5,8 @@
 
 	class Route extends Bootstrap{
 		protected function initRoutes(){
-	//indexController				<--
+	//indexController				
+//<--
 			$routes['home'] = array(
 				'route' =>'/',
 				'controller'=>'indexController',
@@ -26,7 +27,8 @@
 				'controller'=>'indexController',
 				'action'=>'registrar'
 			);
-	//authController				<--		
+	//authController				
+//<--		
 			$routes['autenticar'] = array(
 				'route' =>'/autenticar',
 				'controller'=>'authController',
@@ -37,6 +39,8 @@
 				'controller'=>'authController',
 				'action'=>'sair'
 			);
+//appController
+//<--				
 			$routes['inicial'] = array(
 				'route' =>'/inicial',
 				'controller'=>'appController',
@@ -62,6 +66,9 @@
 				'controller'=>'appController',
 				'action'=>'pedidos'
 			);
+
+	// Produtos 
+//<--
 			$routes['produtosAtivos'] = array(
 				'route' =>'/produtosAtivos',
 				'controller'=>'prodController',
