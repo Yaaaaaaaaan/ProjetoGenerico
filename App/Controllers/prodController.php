@@ -10,7 +10,11 @@
 			}
 		}
 		public function exibeClasses(){
-			echo json_encode('load states');
+			read('classeprod','codClasseProd,classeDivisao');
+
+			$classes = execute();
+
+			echo json_encode($classes);
 		}
 		public function exibeProd(){
 			$this->validaAutenticacao();
