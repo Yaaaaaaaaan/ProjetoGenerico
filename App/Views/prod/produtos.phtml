@@ -340,7 +340,7 @@
                     <label for="classeProd" class="col-form-label">Classe:</label>
                      <select class="form-select" aria-label="Default select" name="classeProdBase">
             <option selected>Clique para visualizar</option> 
-            <?php foreach($this->view->classeProdTotal as $class=>$classeProdTotal){?>
+            <?php foreach($this->view->classeProdTotal as $classe=>$classeProdTotal){?>
             <option value="<?=$classeProdTotal['codClasseProd']?>"><?=$classeProdTotal['codClasseProd']?> - <?=$classeProdTotal['classeBase']?></option><?php } ?>
             </select>
                   </div>
@@ -348,7 +348,7 @@
                     <label for="classeProd" class="col-form-label">Divisão:</label>
                     <select class="form-select" aria-label="Default select" name="classeProdBase">
             <option selected>Clique para visualizar</option> 
-            <?php foreach($this->view->divisaoProdTotal as $divisaoProdTotal=>$divisaoProdTotal){?>
+            <?php foreach($this->view->divisaoProdTotal as $divisao=>$divisaoProdTotal){?>
             <option value="<?=$divisaoProdTotal['codClasseProd']?>"><?=$divisaoProdTotal['codClasseProd']?> - <?=$divisaoProdTotal['classeDivisao']?></option><?php } ?>
             </select>
                   </div>
