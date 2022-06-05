@@ -37,12 +37,6 @@
 				'controller'=>'authController',
 				'action'=>'sair'
 			);
-			/*$routes['timeline'] = array(
-				'route' =>'/timeline',
-				'controller'=>'appController',
-				'action'=>'timeline'
-			);*/
-	//appController					<--		
 			$routes['inicial'] = array(
 				'route' =>'/inicial',
 				'controller'=>'appController',
@@ -68,27 +62,6 @@
 				'controller'=>'appController',
 				'action'=>'pedidos'
 			);
-			/*$routes['tweet'] = array(
-				'route' =>'/tweet',
-				'controller'=>'appController',
-				'action'=>'tweet'
-			);
-			$routes['quemSeguir'] = array(
-				'route' =>'/quemSeguir',
-				'controller'=>'appController',
-				'action'=>'quemSeguir'
-			);
-			$routes['acao'] = array(
-				'route' =>'/acao',
-				'controller'=>'appController',
-				'action'=>'acao'
-			);
-			$routes['rtweet'] = array(
-				'route' =>'/rtweet',
-				'controller'=>'appController',
-				'action'=>'rtweet'
-			);*/
-	//prodController 				<--		
 			$routes['produtosAtivos'] = array(
 				'route' =>'/produtosAtivos',
 				'controller'=>'prodController',
