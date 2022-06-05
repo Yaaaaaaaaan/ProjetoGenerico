@@ -9,13 +9,6 @@
 				header("Location: /login?login=erro");
 			}
 		}
-		public function exibeClasses(){
-			read('classeprod','codClasseProd,classeDivisao');
-
-			$classes = execute();
-
-			echo json_encode($classes);
-		}
 		public function exibeProd(){
 			$this->validaAutenticacao();
 	 		$produto=Container::getModel('produto');

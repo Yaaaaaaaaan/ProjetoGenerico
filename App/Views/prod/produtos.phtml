@@ -338,7 +338,7 @@
                 <div class="mb-3 row">
                   <div class="col-6">
                     <label for="classeProd" class="col-form-label">Classe:</label>
-                     <select class="form-select" aria-label="Default select" name="classeProdBase">
+                     <select class="form-select" aria-label="Default select" name="classeProdBase" id="classeProdBase">
             <option selected>Clique para visualizar</option> 
             <?php foreach($this->view->classeProdTotal as $classe=>$classeProdTotal){?>
             <option value="<?=$classeProdTotal['codClasseProd']?>"><?=$classeProdTotal['codClasseProd']?> - <?=$classeProdTotal['classeBase']?></option><?php } ?>

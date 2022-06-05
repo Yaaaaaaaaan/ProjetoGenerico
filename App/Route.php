@@ -72,7 +72,7 @@
 			$routes['produtosAtivos'] = array(
 				'route' =>'/produtosAtivos',
 				'controller'=>'prodController',
-				'action'=>'exibeClasses'
+				'action'=>'exibeProd'
 			);
 			$routes['produtosInativos'] = array(
 				'route' =>'/produtosInativos',
