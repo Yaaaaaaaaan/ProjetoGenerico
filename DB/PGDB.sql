@@ -6,7 +6,7 @@ create table usuario(
 	idUsuario int(11) not null auto_increment primary key,
 	nomeUsuario varchar(100) not null,
 	nickUsuario varchar(40) not null unique,
-	emailUsuario varchar(150) not null unique,
+	emailUsuario varchar(150) not null,
 	senhaUsuario varchar(32) not null,
 	dataCad datetime default current_timestamp,
 	dataAlt datetime default current_timestamp

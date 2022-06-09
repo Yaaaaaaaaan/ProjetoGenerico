@@ -44,6 +44,7 @@
 			}else {
 				$this->view->usuario=array('nome'=>$_POST['nome'],'nick'=>$_POST['nick'],'email'=>$_POST['email'],'senha'=>$_POST['senha'],);
 				$this->view->erroCadastro=true;
+				$this->view->erroCadastroUsuario=true;
 				$this->render('novo');
 			}
 		}

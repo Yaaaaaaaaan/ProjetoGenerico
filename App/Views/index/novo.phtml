@@ -23,6 +23,13 @@
                 <div class="form-group">
                 <input type="text" value="<?= $this->view->usuario['nick']?>" class="form-control" placeholder="Nick" name="nick">
               </div>
+              <div class="input-group mb-1">
+                <input type="text" class="form-control" placeholder="Nick" aria-label="Nick" value="<?= $this->view->usuario['nick']?>">
+                 <?php if($this->view->erroCadastroUsuario) {?>
+                 <span class="input-group-text text-danger">*Usuário existente.<span>
+              <?php }?>
+               
+              </div>
               <div class="form-group">
                 <input type="email" value="<?= $this->view->usuario['email']?>" class="form-control" placeholder="E-mail" name="email">
               </div>
