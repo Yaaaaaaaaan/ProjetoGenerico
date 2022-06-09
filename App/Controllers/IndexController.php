@@ -38,7 +38,7 @@
 			$usuario->__set('nick', $_POST['nick']);
 			$usuario->__set('email', $_POST['email']);
 			$usuario->__set('senha',md5($_POST['senha']));
-			if($usuario->validarcadastro() && count($usuario->getUsuarioPorEmail())==0){
+			if($usuario->validarcadastro() && count($usuario->getUsuarioPorNick())==0){
 				$usuario->salvarNovoUsuario();	
 				$this->render('cadastro');
 			}else {

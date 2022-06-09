@@ -50,6 +50,13 @@ class Usuario extends Model{
 		$stmt->execute();
 		return $stmt->fetchAll(\PDO::FETCH_ASSOC);
 	}
+	public function getUsuarioPorNick(){
+		$query = "select nomeUsuario, nickUsuario, emailUsuario from usuario where nickUsuario= :nick";
+		$stmt = $this->db->prepare($query);
+		$stmt->bindValue(':nick', $this->__get('nick'));
+		$stmt->execute();
+		return $stmt->fetchAll(\PDO::FETCH_ASSOC);
+	}
 	public function autenticar(){
 		$query= "select idUsuario, nomeUsuario, nickUsuario, emailUsuario, rankDados from usuario JOIN dadosUsFo on idUsuario = idDadosUsFoFk where senhaUsuario = :senha and (:email = nickUsuario OR emailUsuario = :email)";
 		$stmt=$this->db->prepare($query);
