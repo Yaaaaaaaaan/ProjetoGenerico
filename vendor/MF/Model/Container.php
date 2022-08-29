@@ -8,4 +8,4 @@
 			return new $class($conn);
 		}
 	}
- ?>
+?>
