@@ -241,8 +241,8 @@
                   <label for="classeProd" class="col-form-label">Classe:</label>
                   <select class="form-select" aria-label="Default select example" name="classeProd" id="classeProd">
                     <option selected>Selecione...</option>
-                    <option value="Alimenticio">Alimentício</option>
-                    <option value="Vestuario">Vestuário</option>
+                    <?php foreach($this->view->classeProdTotal as $classe=>$classeProdTotal){?>
+                    <option value="<?=$classeProdTotal['codClasseProd']?>"><?=$classeProdTotal['codClasseProd']?> - <?=$classeProdTotal['classeBase']?></option><?php } ?>
                   </select>
                 </div>
               </div>
