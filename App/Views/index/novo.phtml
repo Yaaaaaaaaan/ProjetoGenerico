@@ -23,13 +23,13 @@
                 <div class="form-group">
                 <input type="text" value="<?= $this->view->usuario['nick']?>" class="form-control" placeholder="Nick" name="nick">
               </div>
-              <div class="input-group mb-1">
-                <input type="text" class="form-control" placeholder="Nick" aria-label="Nick" value="<?= $this->view->usuario['nick']?>">
-                 <?php if($this->view->erroCadastroUsuario) {?>
+              <!--<div class="input-group mb-1">
+                <input type="text" class="form-control" placeholder="Nick" aria-label="Nick" value="<?=$this->view->usuario['nick']?>">
+                 <?php //if($this->view->erroCadastroUsuario) {?>
                  <span class="input-group-text text-danger">*Usuário existente.<span>
-              <?php }?>
+              <?php //}?>
                
-              </div>
+              </div>-->
               <div class="form-group">
                 <input type="email" value="<?= $this->view->usuario['email']?>" class="form-control" placeholder="E-mail" name="email">
               </div>
@@ -48,9 +48,9 @@
               <?php if($this->view->erroCadastro){ ?>
                 <small class="form-text text-danger">*Erro ao tentar realizar o cadastro, verifique se os campos foram preenchidos corretamente.<small>
                 
-              <?php } if($this->view->erroCadastroUsuario) {?>
-                 <small class="form-text text-danger">*Usuário já existente no sistema, tente novamente com um novo nick.<small>
-              <?php }?>
+              <?php } //if( $this->view->erroCadastroUsuario) {?>
+                 <!--<small class="form-text text-danger">*Usuário já existente no sistema, tente novamente com um novo nick.<small>-->
+              <?php //}?>
             </form>
 
           </div>
